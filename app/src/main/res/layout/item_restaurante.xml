@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+    <TextView
+        android:id="@+id/tviNombreRestaurante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angus Meat Market"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+    <TextView
+        android:id="@+id/tviDireccionRestaurante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Republica de Panama"
+        android:layout_below="@id/tviNombreRestaurante"/>
+    <TextView
+        android:id="@+id/tviTelefonoRestaurante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="34563433"
+        android:layout_below="@id/tviDireccionRestaurante"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/food"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+</RelativeLayout>
