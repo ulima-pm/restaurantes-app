@@ -13,10 +13,11 @@ import java.util.List;
 
 import pe.edu.ulima.restaurantapp.adapters.ListadoCategoriasAdapter;
 import pe.edu.ulima.restaurantapp.model.Categoria;
+import pe.edu.ulima.restaurantapp.model.OnCategoriasCargadasListener;
 import pe.edu.ulima.restaurantapp.model.RestauranteManager;
 
 public class CategoriasFragment extends Fragment
-        implements AdapterView.OnItemClickListener{
+        implements AdapterView.OnItemClickListener, OnCategoriasCargadasListener{
     ListView lviCategorias;
 
     @Override
@@ -24,10 +25,8 @@ public class CategoriasFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
         lviCategorias = (ListView) getView().findViewById(R.id.lviCategorias);
 
-        List<Categoria> categorias = new RestauranteManager().obtenerCategorias();
-        ListadoCategoriasAdapter adapterCategorias =
-                new ListadoCategoriasAdapter(getActivity(), categorias);
-        lviCategorias.setAdapter(adapterCategorias);
+        new RestauranteManager().obtenerCategorias(this);
+
         lviCategorias.setOnItemClickListener(this);
     }
 
@@ -42,6 +41,18 @@ public class CategoriasFragment extends Fragment
         Categoria categoria = (Categoria) adapterView.getItemAtPosition(i);
         ((OnCategoriaSelectedListener)getActivity())
                 .onCategoriaSelected(categoria.getCodigo());
+    }
+
+    @Override
+    public void onCategoriasCargadas(List<Categoria> categorias) {
+        ListadoCategoriasAdapter adapterCategorias =
+                new ListadoCategoriasAdapter(getActivity(), categorias);
+        lviCategorias.setAdapter(adapterCategorias);
+    }
+
+    @Override
+    public void onError(String error) {
+
     }
 
     interface OnCategoriaSelectedListener{

@@ -7,8 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity
-implements CategoriasFragment.OnCategoriaSelectedListener{
-
+    implements CategoriasFragment.OnCategoriaSelectedListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
